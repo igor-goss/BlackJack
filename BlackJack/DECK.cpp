@@ -1,12 +1,12 @@
 #include <string>
-#include "Card.h"
+#include <time.h>
+#include "Deck.h"
 
 
-Card* CreateDeck()
+void CreateDeck(Card* Deck)
 {
-	std::string Hearts = "Hearts", Spades = "Spades", Clubs = "Clubs", Diamonds = "Diamonds";
+	std::string Hearts = "Hearts  ", Spades = "Spades  ", Clubs = "Clubs   ", Diamonds = "Diamonds";
 
-	Card* Deck = new Card[208];
 
 	Deck[0].rank = "2";
 	Deck[0].suit = Hearts;
@@ -221,5 +221,20 @@ Card* CreateDeck()
 	for (int i = 52; i < 208; ++i)
 		Deck[i] = Deck[i - 52];
 
-	return Deck;
 }
+
+
+void DeckShuffle(Card* Deck)
+{
+	srand(time(NULL));
+	Card temp;
+
+	for (int i = 0; i < 208; ++i)
+	{
+		int j = rand() % 208;
+		temp = Deck[i];
+		Deck[i] = Deck[j];
+		Deck[j] = temp;
+	}
+}
+

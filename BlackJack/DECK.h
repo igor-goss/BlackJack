@@ -1,7 +1,17 @@
 #pragma once
 
 #include <string>
-#include "Card.h"
 
-Card* CreateDeck();
 
+class Card
+{
+public:
+	std::string rank;
+	std::string suit;
+	int denomination;
+};
+
+
+void CreateDeck(Card* Deck);
+
+void DeckShuffle(Card* Deck);
